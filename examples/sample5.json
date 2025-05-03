@@ -1,0 +1,32 @@
+{
+    "user_id": "user202",
+    "name": "Nikolai Petrov",
+    "personality_traits": {
+      "extroversion": 0.48,
+      "creativity": 0.52,
+      "analytical": 0.90,
+      "empathy": 0.40,
+      "risk_taking": 0.85
+    },
+    "genetic_markers": {
+      "rs4680": "G/G",
+      "rs1800497": "C/C",
+      "rs53576": "A/A",
+      "rs2268498": "C/C"
+    },
+    "ancestry": {
+      "eastern_european": 0.76,
+      "nordic": 0.15,
+      "central_asian": 0.09
+    },
+    "color_preferences": {
+      "warm": 0.30,
+      "high_contrast": 0.60,
+      "saturation": 0.45
+    },
+    "metadata": {
+      "analysis_date": "2025-05-02",
+      "dna_source": "Ancestry",
+      "version": "1.2.0"
+    }
+  }

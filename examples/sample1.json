@@ -1,0 +1,33 @@
+{
+    "user_id": "user123",
+    "name": "Alex Johnson",
+    "personality_traits": {
+      "extroversion": 0.85,
+      "creativity": 0.78,
+      "analytical": 0.42,
+      "empathy": 0.65,
+      "risk_taking": 0.72
+    },
+    "genetic_markers": {
+      "rs4680": "A/G",
+      "rs1800497": "C/T",
+      "rs53576": "G/G",
+      "rs2268498": "T/T"
+    },
+    "ancestry": {
+      "european": 0.68,
+      "mediterranean": 0.22,
+      "asian": 0.05,
+      "african": 0.05
+    },
+    "color_preferences": {
+      "warm": 0.75,
+      "high_contrast": 0.82,
+      "saturation": 0.70
+    },
+    "metadata": {
+      "analysis_date": "2025-04-25",
+      "dna_source": "23andMe",
+      "version": "1.2.0"
+    }
+  }

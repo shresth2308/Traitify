@@ -1,0 +1,32 @@
+{
+    "user_id": "user101",
+    "name": "Priya Sharma",
+    "personality_traits": {
+      "extroversion": 0.65,
+      "creativity": 0.92,
+      "analytical": 0.45,
+      "empathy": 0.78,
+      "risk_taking": 0.62
+    },
+    "genetic_markers": {
+      "rs4680": "A/A",
+      "rs1800497": "C/T",
+      "rs53576": "G/G",
+      "rs2268498": "T/T"
+    },
+    "ancestry": {
+      "south_asian": 0.82,
+      "middle_eastern": 0.10,
+      "european": 0.08
+    },
+    "color_preferences": {
+      "warm": 0.88,
+      "high_contrast": 0.72,
+      "saturation": 0.85
+    },
+    "metadata": {
+      "analysis_date": "2025-04-29",
+      "dna_source": "23andMe",
+      "version": "1.2.0"
+    }
+  }

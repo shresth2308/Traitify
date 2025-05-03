@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }}'s DNA Theme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&family=Nunito&family=Playfair+Display&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: {{ theme.colors.primary }};
+            --accent-color: {{ theme.colors.accent }};
+            --font-family: "{{ theme.font_name }}", sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .theme-preview {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+
+        .color-palette {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .color-swatch {
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .primary-color {
+            background-color: var(--primary-color);
+        }
+
+        .accent-color {
+            background-color: var(--accent-color);
+        }
+
+        .color-details {
+            padding: 15px;
+        }
+
+        .typography {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .layout {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .explanation {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 40px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>{{ name }}'s DNA Theme</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="theme-preview">
+            <div class="color-palette">
+                <div class="color-swatch primary-color">
+                    Primary Color: {{ theme.colors.primary }}
+                </div>
+                <div class="color-swatch accent-color">
+                    Accent Color: {{ theme.colors.accent }}
+                </div>
+                <div class="color-details">
+                    <h3>Color Palette</h3>
+                    <p>Your unique color palette reflects your personality and heritage.</p>
+                </div>
+            </div>
+
+            <div class="typography">
+                <h3>Typography</h3>
+                <p><strong>Font:</strong> {{ theme.font.name }}</p>
+                <p><strong>Description:</strong> {{ theme.font.description }}</p>
+                <div style="font-family: '{{ theme.font_name }}', sans-serif;">
+                    <h1 style="margin-top:20px;">Heading Example</h1>
+                    <p style="font-size: 16px;">This is how body text appears with your font.</p>
+                    <p style="font-size: 14px;">Smaller text example for captions and details.</p>
+                </div>
+            </div>
+
+            <div class="layout">
+                <h3>Layout Style</h3>
+                <p><strong>Style:</strong> {{ theme.layout.name }}</p>
+                <p><strong>Description:</strong> {{ theme.layout.description }}</p>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h2>Your Theme Explanation</h2>
+            <p>{{ explanation }}</p>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="{{ url_for('index') }}" class="btn">Generate Another Theme</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>DNA Theme Generator &copy; 2025</p>
+        </div>
+    </footer>
+</body>
+</html>

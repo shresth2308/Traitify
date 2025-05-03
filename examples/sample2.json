@@ -1,0 +1,32 @@
+{
+    "user_id": "user456",
+    "name": "Mei Lin",
+    "personality_traits": {
+      "extroversion": 0.25,
+      "creativity": 0.45,
+      "analytical": 0.92,
+      "empathy": 0.68,
+      "risk_taking": 0.30
+    },
+    "genetic_markers": {
+      "rs4680": "G/G",
+      "rs1800497": "C/C",
+      "rs53576": "A/G",
+      "rs2268498": "C/T"
+    },
+    "ancestry": {
+      "asian": 0.78,
+      "pacific_islander": 0.12,
+      "european": 0.10
+    },
+    "color_preferences": {
+      "warm": 0.35,
+      "high_contrast": 0.50,
+      "saturation": 0.40
+    },
+    "metadata": {
+      "analysis_date": "2025-04-28",
+      "dna_source": "Ancestry",
+      "version": "1.2.0"
+    }
+  }

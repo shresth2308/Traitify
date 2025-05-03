@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traitify</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4285F4;
+            --secondary-color: #34A853;
+            --accent-color: #FBBC05;
+            --text-color: #333333;
+            --light-bg: #F9F9F9;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -1rem;
+        }
+
+        .col {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            background-color: var(--light-bg);
+            text-decoration: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #805AD5 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .hero-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Upload Section */
+        .upload-section {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+
+        .upload-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            transition: var(--transition);
+            animation: fadeIn 1s ease;
+        }
+
+        .upload-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .upload-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .file-drop-area {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-drop-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+
+        .file-drop-area.active {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.05);
+        }
+
+        .file-icon {
+            font-size: 3rem;
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .file-drop-area:hover .file-icon {
+            color: var(--primary-color);
+        }
+
+        .file-drop-area.active .file-icon {
+            color: var(--secondary-color);
+        }
+
+        .file-message {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .file-tip {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-name {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-bg);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+
+        .btn-upload {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 4rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 2rem;
+            transition: var(--transition);
+            animation: fadeIn 1s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: #666;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            padding: 4rem 0;
+            animation: fadeIn 1s ease;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .theme-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .theme-card {
+            background-color: {{ theme.card_color|default('#ffffff', true) }};
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .theme-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .theme-header {
+            background-color: {{ theme.bg_color|default('#4285F4', true) }};
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .theme-accent {
+            width: 80px;
+            height: 8px;
+            background-color: {{ theme.accent_color|default('#FBBC05', true) }};
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .theme-title {
+            font-family: {{ theme.font|default('Inter', true) }}, sans-serif;
+            margin: 1rem 0;
+        }
+
+        .theme-body {
+            padding: 2rem;
+        }
+
+        .theme-details {
+            list-style: none;
+        }
+
+        .theme-details li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-icon {
+            color: {{ theme.bg_color|default('#4285F4', true) }};
+        }
+
+        .theme-explanation {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--light-bg);
+            border-radius: var(--radius-md);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: var(--white);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            max-width: 300px;
+            opacity: 0.8;
+        }
+
+        .footer-links-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-link a:hover {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Alert/Flash Messages */
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .alert-success {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        /* Loading */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-bg);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Example DNA Cards */
+        .example-dna-section {
+            padding: 4rem 0;
+        }
+
+        .example-dna-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .example-dna-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .example-dna-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .example-dna-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .example-dna-header {
+            padding: 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .example-dna-body {
+            padding: 1.5rem;
+        }
+
+        .example-dna-traits {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-dna-traits li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-dna-btn {
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 4rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            font-weight: 700;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 576px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            border-top: 1px solid #eee;
+        }
+
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 300px;
+        }
+
+        .faq-icon {
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #805AD5 100%);
+            color: var(--white);
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-cta {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-cta:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* DNA Animation */
+        .dna-animation {
+            height: 200px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem auto;
+            perspective: 1000px;
+        }
+
+        .dna-strand {
+            position: relative;
+            height: 200px;
+            width: 40px;
+            transform-style: preserve-3d;
+            animation: rotateDNA 8s linear infinite;
+        }
+
+        .dna-step {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+        }
+
+        .dna-left, .dna-right {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dna-left {
+            left: 0;
+            background-color: var(--primary-color);
+        }
+
+        .dna-right {
+            right: 0;
+            background-color: var(--accent-color);
+        }
+
+        .dna-connector {
+            position: absolute;
+            top: 4px;
+            left: 10px;
+            width: 20px;
+            height: 2px;
+            background-color: #ddd;
+        }
+
+        @keyframes rotateDNA {
+            0% {
+                transform: rotateY(0);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-dna logo-icon"></i>
+                    <span>DNATheme</span>
+                </a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link">Home</a></li>
+                        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                        <li><a href="#examples" class="nav-link">Examples</a></li>
+                        <li><a href="#faq" class="nav-link">FAQ</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                    </ul>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Discover Your Personalized Design Theme Based on Your DNA</h1>
+                <p class="hero-subtitle">Upload your DNA data and get a unique theme that reflects your genetic makeup and personality traits.</p>
+                <div class="hero-icons">
+                    <i class="fas fa-dna hero-icon"></i>
+                    <i class="fas fa-palette hero-icon"></i>
+                    <i class="fas fa-laptop-code hero-icon"></i>
+                </div>
+                <a href="#upload" class="btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="container">
+            <h2 class="section-title">Upload Your DNA File</h2>
+            
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="upload-card">
+                <h3 class="upload-title">Let's Create Your Personalized Theme</h3>
+                <form action="/" method="post" enctype="multipart/form-data" class="file-upload" id="upload-form">
+                    <div class="file-drop-area" id="drop-area">
+                        <i class="fas fa-file-upload file-icon"></i>
+                        <p class="file-message">Drag & drop your DNA JSON file here</p>
+                        <p class="file-tip">or click to browse</p>
+                        <input type="file" name="dna_file" id="file-input" class="file-input" accept=".json">
+                    </div>
+                    <span class="file-name" id="file-name"></span>
+                    <button type="submit" class="btn btn-upload">
+                        <i class="fas fa-dna"></i> Generate My Theme
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section (shown after upload) -->
+    {% if theme %}
+    <section class="results-section" id="results" style="display: block;">
+        <div class="container">
+            <div class="results-header">
+                <h2>Your Personalized DNA Theme</h2>
+                <p>Based on your unique genetic makeup and personality traits</p>
+            </div>
+            <div class="theme-preview">
+                <div class="theme-card">
+                    <div class="theme-header">
+                        <div class="theme-accent"></div>
+                        <h3 class="theme-title">Your DNA Theme</h3>
+                    </div>
+                    <div class="theme-body">
+                        <ul class="theme-details">
+                            <li>
+                                <i class="fas fa-palette detail-icon"></i>
+                                <span>Primary Color: {{ theme.bg_color }}</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-font detail-icon"></i>
+                                <span>Font Family: {{ theme.font }}</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-layer-group detail-icon"></i>
+                                <span>Layout Style: {{ theme.layout }}</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-certificate detail-icon"></i>
+                                <span>Accent Color: {{ theme.accent_color }}</span>
+                            </li>
+                        </ul>
+                        <div class="theme-explanation">
+                            <h4>Theme Explanation</h4>
+                            <p>{{ explanation }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-header">
+                        <div class="theme-accent"></div>
+                        <h3 class="theme-title">Preview</h3>
+                    </div>
+                    <div class="theme-body">
+                        <div class="dna-animation">
+                            <div class="dna-strand">
+                                {% for i in range(10) %}
+                                <div class="dna-step" style="top: {{ i * 20 }}px; transform: translateZ({{ (i % 2) * 20 - 10 }}px);">
+                                    <div class="dna-left"></div>
+                                    <div class="dna-connector"></div>
+                                    <div class="dna-right"></div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <p style="font-family: {{ theme.font|default('Inter', true) }}, sans-serif;">
+                            This is how text would look with your personalized font. The colors and layout style are selected based on your unique DNA profile.
+                        </p>
+                        <button class="btn" style="background-color: {{ theme.bg_color|default('#4285F4', true) }}; margin-top: 1rem;">
+                            <i class="fas fa-download"></i> Download Theme
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-fingerprint feature-icon"></i>
+                    <h3 class="feature-title">Unique Personalization</h3>
+                    <p class="feature-desc">Get a theme that's truly unique to you, based on your DNA profile and personality traits.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-magic feature-icon"></i>
+                    <h3 class="feature-title">Instant Generation</h3>
+                    <p class="feature-desc">Just upload your DNA JSON file and get your personalized theme in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-rocket feature-icon"></i>
+                    <h3 class="feature-title">Modern Design</h3>
+                    <p class="feature-desc">All themes follow modern design principles with clean layouts and harmonious color schemes.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <h3 class="feature-title">Responsive Design</h3>
+                    <p class="feature-desc">Your theme looks great on all devices from mobile phones to desktop computers.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain feature-icon"></i>
+                    <h3 class="feature-title">Personality-Driven</h3>
+                    <p class="feature-desc">Design elements reflect your personality traits like creativity and extroversion.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-globe feature-icon"></i>
+                    <h3 class="feature-title">Cultural Elements</h3>
+                    <p class="feature-desc">Incorporates subtle design elements from your ancestral heritage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-file-upload step-icon"></i>
+                    <h3>Upload DNA File</h3>
+                    <p>Upload your DNA data in JSON format through our secure interface.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-cogs step-icon"></i>
+                    <h3>Algorithm Analysis</h3>
+                    <p>Our algorithm analyzes your genetic traits and personality markers.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-palette step-icon"></i>
+                    <h3>Theme Generation</h3>
+                    <p>We generate a unique theme based on your DNA profile.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-download step-icon"></i>
+                    <h3>Get Your Theme</h3>
+                    <p>Download your theme or view it directly in your browser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example DNA Section -->
+    <section class="example-dna-section" id="examples">
+        <div class="container">
+            <h2 class="example-dna-title">Example DNA Profiles</h2>
+            <div class="example-dna-grid">
+                <div class="example-dna-card">
+                    <div class="example-dna-header" style="background-color: #4285F4;">
+                        <h3>Russian Ancestry</h3>
+                    </div>
+                    <div class="example-dna-body">
+                        <ul class="example-dna-traits">
+                            <li><i class="fas fa-globe"></i> <strong>Ancestry:</strong> Russian</li>
+                            <li><i class="fas fa-palette"></i> <strong>Primary Color:</strong> Blue</li>
+                            <li><i class="fas fa-user"></i> <strong>Personality:</strong> Introverted</li>
+                            <li><i class="fas fa-lightbulb"></i> <strong>Creativity:</strong> Medium</li>
+                        </ul>
+                        <button class="btn example-dna-btn">See Example</button>
+                    </div>
+                </div>
+                <div class="example-dna-card">
+                    <div class="example-dna-header" style="background-color: #FF9800;">
+                        <h3>Indian Ancestry</h3>
+                    </div>
+                    <div class="example-dna-body">
+                        <ul class="example-dna-traits">
+                            <li><i class="fas fa-globe"></i> <strong>Ancestry:</strong> Indian</li>
+                            <li><i class="fas fa-palette"></i> <strong>Primary Color:</strong> Orange</li>
+                            <li><i class="fas fa-user"></i> <strong>Personality:</strong> Extroverted</li>
+                            <li><i class="fas fa-lightbulb"></i> <strong>Creativity:</strong> High</li>
+                        </ul>
+                        <button class="btn example-dna-btn">See Example</button>
+                    </div>
+                </div>
+                <div class="example-dna-card">
+                    <div class="example-dna-header" style="background-color: #4DD0E1;">
+                        <h3>Japanese Ancestry</h3>
+                    </div>
+                    <div class="example-dna-body">
+                        <ul class="example-dna-traits">
+                            <li><i class="fas fa-globe"></i> <strong>Ancestry:</strong> Japanese</li>
+                            <li><i class="fas fa-palette"></i> <strong>Primary Color:</strong> Light Blue</li>
+                            <li><i class="fas fa-user"></i> <strong>Personality:</strong> Introverted</li>
+                            <li><i class="fas fa-lightbulb"></i> <strong>Creativity:</strong> High</li>
+                        </ul>
+                        <button class="btn example-dna-btn">See Example</button>
+                    </div>
+                </div>
+                <div class="example-dna-card">
+                    <div class="example-dna-header" style="background-color: #4CAF50;">
+                        <h3>African Ancestry</h3>
+                    </div>
+                    <div class="example-dna-body">
+                        <ul class="example-dna-traits">
+                            <li><i class="fas fa-globe"></i> <strong>Ancestry:</strong> African</li>
+                            <li><i class="fas fa-palette"></i> <strong>Primary Color:</strong> Green</li>
+                            <li><i class="fas fa-user"></i> <strong>Personality:</strong> Extroverted</li>
+                            <li><i class="fas fa-lightbulb"></i> <strong>Creativity:</strong> Medium</li>
+                        </ul>
+                        <button class="btn example-dna-btn">See Example</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">About DNATheme</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>DNATheme is a revolutionary platform that combines genetic science with design principles to create truly personalized digital experiences.</p>
+                    <p>We believe that your digital presence should be as unique as your DNA. Our algorithm translates genetic traits and personality characteristics into visual design elements that resonate with your true self.</p>
+                    <p>This project was created by team The Algoholics, combining cutting-edge technology with creative design principles.</p>
+                    <h3>The Science Behind It</h3>
+                    <p>Our algorithm analyzes specific genetic markers associated with personality traits, visual preferences, and cultural heritage to generate design elements that align with your intrinsic nature.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="DNA Theme Generator" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What format should my DNA file be in?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your DNA file should be in JSON format with specific ancestry and personality traits. Check out our example files for the exact structure required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my DNA data secure?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We take data privacy very seriously. Your DNA data is processed locally and never stored on our servers. The theme generation happens in your browser.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I customize my generated theme?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, themes are generated directly from your DNA data without customization options. We're working on adding customization features in future updates.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How accurate is the theme to my DNA?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our algorithm makes connections between genetic traits and design elements based on research in color psychology and cultural aesthetics. While it's not an exact science, many users report that their themes feel surprisingly personal.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I use my theme on my website?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can download the generated theme and apply it to your website. We provide CSS variables and design tokens that you can integrate with most modern web frameworks.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you have sample DNA files I can try?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can check out our example DNA profiles section to see sample files and their resulting themes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Create Your Unique Theme?</h2>
+                <p>Upload your DNA data now and discover a design that's as unique as you are.</p>
+                <div class="cta-buttons">
+                    <a href="#upload" class="btn btn-cta">Get Started</a>
+                    <a href="#examples" class="btn btn-secondary">See Examples</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <i class="fas fa-dna"></i> DNATheme
+                    </div>
+                    <p class="footer-desc">Discover a design experience that's uniquely you, powered by your DNA.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-group">
+                    <h3 class="footer-links-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Home</a></li>
+                        <li class="footer-link"><a href="#how-it-works">How It Works</a></li>
+                        <li class="footer-link"><a href="#examples">Examples</a></li>
+                        <li class="footer-link"><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h3 class="footer-links-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Documentation</a></li>
+                        <li class="footer-link"><a href="#">API</a></li>
+                        <li class="footer-link"><a href="#">Sample Files</a></li>
+                        <li class="footer-link"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h3 class="footer-links-title">Legal</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                        <li class="footer-link"><a href="#">Terms of Service</a></li>
+                        <li class="footer-link"><a href="#">Cookie Policy</a></li>
+                        <li class="footer-link"><a href="#">Data Protection</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DNATheme. All rights reserved. Created by team The Algoholics.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // File Upload Handling
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('file-input');
+        const fileName = document.getElementById('file-name');
+        const uploadForm = document.getElementById('upload-form');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        // Highlight drop area when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        // Handle dropped files
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        // Handle selected files
+        fileInput.addEventListener('change', handleFiles, false);
+
+        // Handle form submission
+        uploadForm.addEventListener('submit', handleSubmit, false);
+
+        // Click on drop area to trigger file input
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function highlight() {
+            dropArea.classList.add('active');
+        }
+
+        function unhighlight() {
+            dropArea.classList.remove('active');
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(e) {
+            let files;
+            if (e.dataTransfer) {
+                files = e.dataTransfer.files;
+            } else if (e.target) {
+                files = e.target.files;
+            }
+
+            if (files && files.length > 0) {
+                const file = files[0];
+                updateFileName(file.name);
+            }
+        }
+
+        function updateFileName(name) {
+            fileName.textContent = name;
+            fileName.style.display = 'inline-block';
+        }
+
+        function handleSubmit(e) {
+            if (fileInput.files.length === 0) {
+                e.preventDefault();
+                alert('Please select a file first.');
+                return;
+            }
+
+            loadingOverlay.classList.add('active');
+        }
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+                answer.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navList = document.querySelector('.nav-list');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Generate DNA Animation
+        function createDnaAnimation() {
+            const dnaStrand = document.querySelector('.dna-strand');
+            
+            if (!dnaStrand) return;
+            
+            // Clear existing steps
+            dnaStrand.innerHTML = '';
+            
+            // Create new steps
+            for (let i = 0; i < 10; i++) {
+                const step = document.createElement('div');
+                step.className = 'dna-step';
+                step.style.top = `${i * 20}px`;
+                step.style.transform = `translateZ(${(i % 2) * 20 - 10}px)`;
+                
+                const left = document.createElement('div');
+                left.className = 'dna-left';
+                
+                const connector = document.createElement('div');
+                connector.className = 'dna-connector';
+                
+                const right = document.createElement('div');
+                right.className = 'dna-right';
+                
+                step.appendChild(left);
+                step.appendChild(connector);
+                step.appendChild(right);
+                
+                dnaStrand.appendChild(step);
+            }
+        }
+        
+        // Initialize DNA animation
+        window.addEventListener('load', createDnaAnimation);
+    </script>
+</body>
+</html>
