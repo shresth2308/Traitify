@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Theme</title>
+    <style>
+        body {
+            background-color: {{ primary }};
+            color: {{ accent }};
+            font-family: '{{ font }}', sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .layout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background-color: {{ accent }};
+            color: {{ primary }};
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Generated Theme</h1>
+    <div class="layout">
+        <p>Layout: {{ layout }}</p>
+    </div>
+    <p style="text-align:center;">Primary Color: {{ primary }}</p>
+    <p style="text-align:center;">Accent Color: {{ accent }}</p>
+    <p style="text-align:center;">Font: {{ font }}</p>
+</body>
+</html>

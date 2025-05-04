@@ -225,16 +225,38 @@ def generate_theme_explanation(theme, traits, ancestry):
 
     return explanation
 
-
+@app.route("/", methods=["POST"])
+def generate_theme_route():
+    file = request.files.get("dna_file")
+    if file and allowed_file(file.filename):
+        try:
+            dna_data = json.load(file)  # Load the DNA data from the uploaded file
+            theme, explanation = generate_theme(dna_data)  # Pass dna_data to the function
+            if theme:
+                session['theme'] = theme
+                session['explanation'] = explanation
+                return redirect(url_for('results'))
+            else:
+                flash("Failed to generate theme. Please check your DNA file.", "error")
+        except Exception as e:
+            flash(f"Error processing file: {e}", "error")
+    else:
+        flash("Invalid file. Please upload a valid DNA JSON file.", "error")
+    return redirect(url_for("index"))
+@app.route("/", methods=["POST"])
 def generate_theme(dna_data):
+    """Generate a theme based on the DNA data"""
     try:
+        # Process dna_data to extract traits, ancestry, etc.
         traits = dna_data.get('personality_traits', {})
         ancestry = dna_data.get('ancestry', {})
 
+        # Generate colors, font, and layout
         colors = get_color_from_traits(traits, ancestry)
         font = get_font_from_traits(traits)
         layout = get_layout_from_traits(traits)
 
+        # Create the theme dictionary
         theme = {
             'colors': colors,
             'font': font,
@@ -242,18 +264,25 @@ def generate_theme(dna_data):
             'bg_color': colors['primary'],
             'accent_color': colors['accent'],
             'font_name': font['name'],
-            'layout_style': layout['name']
+            'layout_style': layout['name'],
         }
 
+        # Generate explanation
         explanation = generate_theme_explanation(theme, traits, ancestry)
-
         return theme, explanation
 
     except Exception as e:
         print(f"Error generating theme: {e}")
         return None, None
+def mock_theme():
+    primary = request.args.get("primary", "#ffffff")
+    accent = request.args.get("accent", "#000000")
+    font = request.args.get("font", "Default Font")
+    layout = request.args.get("layout", "Default Layout")
+    return render_template("mock_theme.html", primary=primary, accent=accent, font=font, layout=layout)
 
 @app.route("/", methods=["GET", "POST"])
+
 def index():
     theme = None
     explanation = ""
